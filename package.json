@@ -5,9 +5,15 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
+    "lint": "node node_modules/eslint/bin/eslint.js *.js js/** --ext js",
     "flow": "flow"
   },
   "dependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-plugin-flowtype": "^2.49.3",
+    "eslint-plugin-react": "^7.9.1",
+    "eslint-plugin-react-native": "^3.2.1",
     "react": "16.3.1",
     "react-native": "0.55.4"
   },
