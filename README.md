@@ -104,20 +104,6 @@ And then, to import:
 import Button from 'components.Button';
 ```
 
-But local components are not named, and are instead imported using their relative path. For example, for `ExampleListItem`, a component used by `ExampleList`:
-
-```javascript
-/**
- * @flow
- */
-```
-
-To import:
-
-```javascript
-import ExampleListItem from './ExampleListItem';
-```
-
 The current `providesModule` groups are:
 
 * `components.*`: generic, reusable components
