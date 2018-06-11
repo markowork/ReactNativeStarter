@@ -41,6 +41,7 @@
 		F6498D86F2734FD2A1A55D0C /* libRNDeviceInfo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A17A219AB6D64DCF90CEB063 /* libRNDeviceInfo-tvOS.a */; };
 		DB3B08FF4E4D425CB897D030 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC3511196464C9EBCF771B5 /* libRNSVG.a */; };
 		461B9764B0104519BD899B18 /* libRNSVG-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC6C978E795240098BC2E28A /* libRNSVG-tvOS.a */; };
+		A99D9B236584406AB9297614 /* GothamRounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 237ACD376FFD475D958D6534 /* GothamRounded-Bold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -352,6 +353,7 @@
 		CB9D48C7239644A2A48933C2 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; name = "RNSVG.xcodeproj"; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		9BC3511196464C9EBCF771B5 /* libRNSVG.a */ = {isa = PBXFileReference; name = "libRNSVG.a"; path = "libRNSVG.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		CC6C978E795240098BC2E28A /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; name = "libRNSVG-tvOS.a"; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		237ACD376FFD475D958D6534 /* GothamRounded-Bold.otf */ = {isa = PBXFileReference; name = "GothamRounded-Bold.otf"; path = "../assets/fonts/GothamRounded-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -593,6 +595,7 @@
 				00E356EF1AD99517003FC87E /* ReactNativeStarterTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				A1DA547D6A8E4661BE50E419 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -618,6 +621,15 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		A1DA547D6A8E4661BE50E419 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				237ACD376FFD475D958D6534 /* GothamRounded-Bold.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -1065,6 +1077,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				A99D9B236584406AB9297614 /* GothamRounded-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

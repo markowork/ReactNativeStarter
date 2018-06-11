@@ -81,11 +81,16 @@ Place images in `/assets/images/`. They can have `@2x`, `@3x`, and `@4x` suffixe
 <Image source={ require('../../assets/images/someName.png') } />
 ```
 
+Additionally it would be great to use `optipng` on photos (optipng is just a command-line tool. Good to optimize PNGs in a lossless way. You can install with `brew install optipng` if you use homebrew) since the bundles can get big and every amount helps.
+
+Move to `assets/images` folder and run `optipng -o7 -strip all on pin_orange@1x.png` where `pin_orange@1x.png` is our image file name.
+
 * Do not use dynamic strings inside the `require()` call as it is replaced with a hash during compile time and it won't work.
 * The file path is relative.
 
 See [the documentation](https://facebook.github.io/react-native/docs/images.html) for more information.
 
+For SVGs we use a component called `SVGImage` and pass SVG content as `svgXmlData` prop. Usually we use `Icons` from `Resources` module to store our SVG content.
 
 ### Exporting module names
 
@@ -107,3 +112,6 @@ import Button from 'components.Button';
 The current `providesModule` groups are:
 
 * `components.*`: generic, reusable components
+* `data.*`: utilities related to data storage and manipulation.
+* `resources.*`: global resource values. Normally imported from the top-level `Resources` module.
+* `utils.*`: utility classes and functions
