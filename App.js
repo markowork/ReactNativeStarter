@@ -7,7 +7,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { Icons } from 'Resources';
+
 import Button from 'components.Button';
+import SVGImage from 'components.SVGImage';
 import DeviceUtils from 'utils.DeviceUtils';
 
 const styles = StyleSheet.create({
@@ -31,6 +34,7 @@ export default class App extends Component<Props> {
                     onPress={ () => { console.log('123'); } }
                     text={ 'Example button' }
                 />
+                <SVGImage svgXmlData={ Icons.example.mastercard } />
             </View>
         );
     }
