@@ -7,6 +7,8 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
+import ServiceInitializer from './js/shared/initializers/ServiceInitializer';
+
 import { Icons } from 'Resources';
 
 import Button from 'components.Button';
@@ -42,6 +44,8 @@ export default class App extends Component<Props, State> {
     }
 
     componentDidMount() {
+        ServiceInitializer.initialize();
+
         UserData.read(() => {
             const userDataState = UserData.get();
             if (userDataState) {

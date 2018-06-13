@@ -93,7 +93,7 @@ type State = {
 };
 
 export default class SVGImage extends React.Component<Props, State> {
-    isComponentMounted: boolean;
+    _isComponentMounted: boolean;
 
     constructor(props: Props) {
         super(props);
@@ -102,7 +102,7 @@ export default class SVGImage extends React.Component<Props, State> {
             svgXmlData: props.svgXmlData,
         };
 
-        this.isComponentMounted = false;
+        this._isComponentMounted = false;
 
         // Gets the image data from an URL or a static file
         if (props.source) {
@@ -112,11 +112,11 @@ export default class SVGImage extends React.Component<Props, State> {
     }
 
     componentWillMount() {
-        this.isComponentMounted = true;
+        this._isComponentMounted = true;
     }
 
     componentWillUnmount() {
-        this.isComponentMounted = false;
+        this._isComponentMounted = false;
     }
 
     componentWillReceiveProps(nextProps: Props) {
@@ -141,7 +141,7 @@ export default class SVGImage extends React.Component<Props, State> {
         } catch (e) {
             console.error('ERROR SVG', e);
         } finally {
-            if (this.isComponentMounted) {
+            if (this._isComponentMounted) {
                 this.setState({ svgXmlData: responseXML });
             }
         }
