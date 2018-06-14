@@ -68,6 +68,7 @@ export default class ExampleScreen extends React.PureComponent<Props, State> {
                 { this.renderSection('Adding a custom font') }
                 { this.renderSection('Adding an image and icons') }
                 { this.renderSection('Persistent data') }
+                { this.renderSection('Go to modal screen') }
             </ScrollView>
         );
     }
@@ -103,12 +104,12 @@ export default class ExampleScreen extends React.PureComponent<Props, State> {
                     <View>
                         <Text>
                             {'Image as an asset'}
-                            <Image source={ require('../../../../assets/images/pin_orange.png') } />
                         </Text>
+                        <Image source={ require('../../../../assets/images/pin_orange.png') } />
                         <Text>
                             {'Image as a svg'}
-                            <SVGImage svgXmlData={ Icons.example.mastercard } />
                         </Text>
+                        <SVGImage svgXmlData={ Icons.example.mastercard } />
                     </View>
                 );
             case 'Getting the device info':
@@ -128,10 +129,23 @@ export default class ExampleScreen extends React.PureComponent<Props, State> {
                         </Text>
                     </View>
                 );
+
+            case 'Go to modal screen':
+                return (
+                    <Button
+                        shouldHavePressDelay={ true }
+                        onPress={ () => { this.navigateToRoute('ExampleModal'); } }
+                        text={ 'Open modal' }
+                    />
+                );
         
             default:
                 break;
         }
+    }
+
+    navigateToRoute(routeName: string) {
+        this.props.navigation.navigate(routeName);
     }
 
     togglePersistentDataValue() {
