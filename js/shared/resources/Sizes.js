@@ -52,6 +52,8 @@ const BasicSizes = {
     exampleButtonLetterSpacing: SizeFunctions.scaledFont(1),
     exampleButtonFontSize: SizeFunctions.scaledFont(16),
     exampleButtonLineHeight: SizeFunctions.scaledFont(21),
+
+    exampleScreenSectionTitle: SizeFunctions.scaledFont(21),
 };
 
 // Final export composition
