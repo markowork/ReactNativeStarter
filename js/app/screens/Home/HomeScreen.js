@@ -39,6 +39,7 @@ export default class HomeScreen extends React.PureComponent<Props, State> {
     }
 
     navigateToRoute(routeName: string) {
-        this.props.navigation.navigate(routeName);
+        const objectToPassViaRoute = { text: 'This is an object from home screen that we pass to example screen' };
+        this.props.navigation.navigate(routeName, objectToPassViaRoute);
     }
 }

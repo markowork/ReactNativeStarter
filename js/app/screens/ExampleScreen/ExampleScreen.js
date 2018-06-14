@@ -30,7 +30,9 @@ const styles = StyleSheet.create({
     },
 });
 
-type Props = {};
+type Props = {
+    navigation: any,
+};
 type State = {
     userDataExampleFlag: boolean,
 };
@@ -54,8 +56,14 @@ export default class ExampleScreen extends React.PureComponent<Props, State> {
     }
 
     render() {
+        const { navigation } = this.props;
+        const textFromRouteParams = navigation.getParam('text', 'defaultValue');
+
         return (
             <ScrollView style={ styles.container }>
+                <Text style={ styles.section }>
+                    { textFromRouteParams }
+                </Text>
                 { this.renderSection('Getting the device info') }
                 { this.renderSection('Adding a custom font') }
                 { this.renderSection('Adding an image and icons') }
