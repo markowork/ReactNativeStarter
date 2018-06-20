@@ -21,7 +21,7 @@ import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource'
 
 import { Colors } from 'Resources';
 
-import Svg, { Circle, Ellipse, G, LinearGradient, RadialGradient, Line, Path, Polygon, Polyline, Rect, Symbol, Use, Defs, Stop } from 'react-native-svg';
+import Svg, { Circle, Ellipse, G, LinearGradient, RadialGradient, Path, Polygon, Rect, Defs, Stop } from 'react-native-svg';
 
 const ACEPTED_SVG_ELEMENTS = [
     'svg',

@@ -5,7 +5,10 @@
  */
 
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
+import reducers from './js/shared/reducers';
 import ServiceInitializer from './js/app/initializers/ServiceInitializer';
 import { userDataInitializer } from './js/app/initializers/UserDataInitializer';
 
@@ -21,6 +24,11 @@ export default class App extends Component<Props, State> {
     }
 
     render() {
-        return <RootNavigator />;
+        const store = createStore(reducers);
+        return (
+            <Provider store={ store }>
+                <RootNavigator />
+            </Provider>
+        );
     }
 }

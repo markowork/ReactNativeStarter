@@ -71,12 +71,14 @@ export default class Button extends React.PureComponent<Props, State> {
      * shouldHavePressDelay prop is optional and is used to prevent double taps
      */
     onPress() {
-        if (this.props.shouldHavePressDelay) {
-            PressUtils.pressIfAllowed(() => {
+        if (this.props.onPress) {
+            if (this.props.shouldHavePressDelay) {
+                PressUtils.pressIfAllowed(() => {
+                    this.props.onPress();
+                });
+            } else {
                 this.props.onPress();
-            });
-        } else {
-            this.props.onPress();
+            }
         }
     }
 }

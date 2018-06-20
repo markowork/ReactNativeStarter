@@ -5,8 +5,8 @@
 import UserData from 'data.UserData';
 
 export function userDataInitializer(): Promise<void> {
-    return new Promise((resolve, reject) => {
-        UserData.read((data) => {
+    return new Promise((resolve) => {
+        UserData.read(() => {
             // We wait one additional frame before starting everything; this is done to
             // avoid having it run within a PersistentData context, which would mean initialization
             // errors are hidden away (and we only get PersistentData errors instead).

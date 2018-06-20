@@ -5,6 +5,7 @@
 
 import * as React from 'react';
 import { Image, StyleSheet, ScrollView, Text, View } from 'react-native';
+import { connect } from 'react-redux';
 
 import { Icons, Sizes } from 'Resources';
 
@@ -13,6 +14,8 @@ import SVGImage from 'components.SVGImage';
 import UserData from 'data.UserData';
 
 import DeviceUtils from 'utils.DeviceUtils';
+
+import { toggleExampleReduxBooleanValue } from 'actions.Example';
 
 const styles = StyleSheet.create({
     container: {
@@ -32,12 +35,14 @@ const styles = StyleSheet.create({
 
 type Props = {
     navigation: any,
+    exampleValueFromRedux: boolean,
+    toggleExampleReduxBooleanValue: any,
 };
 type State = {
     userDataExampleFlag: boolean,
 };
 
-export default class ExampleScreen extends React.PureComponent<Props, State> {
+class ExampleScreen extends React.PureComponent<Props, State> {
     constructor(props: Props) {
         super(props);
 
@@ -69,6 +74,7 @@ export default class ExampleScreen extends React.PureComponent<Props, State> {
                 { this.renderSection('Adding an image and icons') }
                 { this.renderSection('Persistent data') }
                 { this.renderSection('Go to modal screen') }
+                { this.renderSection('Redux usage') }
             </ScrollView>
         );
     }
@@ -138,6 +144,19 @@ export default class ExampleScreen extends React.PureComponent<Props, State> {
                         text={ 'Open modal' }
                     />
                 );
+            case 'Redux usage':
+                return (
+                    <View>
+                        <Text>
+                            {`Redux, example value is currenty ${String(this.props.exampleValueFromRedux)}`}
+                        </Text>
+                        <Button
+                            shouldHavePressDelay={ true }
+                            onPress={ () => { this.toggleReduxExampleValue(); } }
+                            text={ 'Change redux value' }
+                        />
+                    </View>
+                );
         
             default:
                 break;
@@ -153,4 +172,18 @@ export default class ExampleScreen extends React.PureComponent<Props, State> {
             this.setState({ userDataExampleFlag: !this.state.userDataExampleFlag });
         });
     }
+
+    toggleReduxExampleValue() {
+        this.props.toggleExampleReduxBooleanValue(!this.props.exampleValueFromRedux);
+    }
 }
+
+const mapStateToProps = state => {
+    return {
+        exampleValueFromRedux: state.example.exampleBooleanValue,
+    };
+};
+
+export default connect(mapStateToProps, {
+    toggleExampleReduxBooleanValue,
+})(ExampleScreen);
