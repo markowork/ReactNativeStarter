@@ -4,7 +4,7 @@
  */
 
 import * as React from 'react';
-import { Image, StyleSheet, ScrollView, Text, View } from 'react-native';
+import { Image, NativeModules, StyleSheet, ScrollView, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { Icons, Sizes } from 'Resources';
@@ -16,6 +16,8 @@ import UserData from 'data.UserData';
 import DeviceUtils from 'utils.DeviceUtils';
 
 import { toggleExampleReduxBooleanValue } from 'actions.Example';
+
+const ExampleNativeModule = NativeModules.ExampleNativeModule;
 
 const styles = StyleSheet.create({
     container: {
@@ -40,6 +42,7 @@ type Props = {
 };
 type State = {
     userDataExampleFlag: boolean,
+    reversedString: string,
 };
 
 class ExampleScreen extends React.PureComponent<Props, State> {
@@ -48,6 +51,7 @@ class ExampleScreen extends React.PureComponent<Props, State> {
 
         this.state = {
             userDataExampleFlag: false,
+            reversedString: 'example',
         };
     }
 
@@ -58,6 +62,10 @@ class ExampleScreen extends React.PureComponent<Props, State> {
                 userDataExampleFlag: userDataState.exampleFlag,
             });
         }
+
+        ExampleNativeModule.reverseCharacterOrder(this.state.reversedString).then((reversedString: string) => {
+            this.setState({ reversedString: reversedString });      
+        });
     }
 
     render() {
@@ -75,6 +83,7 @@ class ExampleScreen extends React.PureComponent<Props, State> {
                 { this.renderSection('Persistent data') }
                 { this.renderSection('Go to modal screen') }
                 { this.renderSection('Redux usage') }
+                { this.renderSection('Native modules example') }
             </ScrollView>
         );
     }
@@ -155,6 +164,14 @@ class ExampleScreen extends React.PureComponent<Props, State> {
                             onPress={ () => { this.toggleReduxExampleValue(); } }
                             text={ 'Change redux value' }
                         />
+                    </View>
+                );
+            case 'Native modules example':
+                return (
+                    <View>
+                        <Text>
+                            {`Native module that takes a string "example" and returns it reversed!\nreturned string: ${this.state.reversedString}`}
+                        </Text>
                     </View>
                 );
         
