@@ -4,10 +4,10 @@
  */
 
 import * as React from 'react';
-import { Image, NativeModules, StyleSheet, ScrollView, Text, View } from 'react-native';
+import { Animated, Image, NativeModules, StyleSheet, ScrollView, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
-import { Icons, Sizes } from 'Resources';
+import { Colors, Icons, Sizes } from 'Resources';
 
 import Button from 'components.Button';
 import SVGImage from 'components.SVGImage';
@@ -33,6 +33,11 @@ const styles = StyleSheet.create({
     customFontFamily: {
         fontFamily: 'GothamRounded-Bold',
     },
+    opacityAnimationView: {
+        backgroundColor: Colors.red,
+        height: Sizes.scaled(50),
+        width: Sizes.scaled(50),
+    },
 });
 
 type Props = {
@@ -43,6 +48,7 @@ type Props = {
 type State = {
     userDataExampleFlag: boolean,
     reversedString: string,
+    opacityValue: Animated.Value,
 };
 
 class ExampleScreen extends React.PureComponent<Props, State> {
@@ -52,6 +58,7 @@ class ExampleScreen extends React.PureComponent<Props, State> {
         this.state = {
             userDataExampleFlag: false,
             reversedString: 'example',
+            opacityValue: new Animated.Value(0),
         };
     }
 
@@ -84,6 +91,7 @@ class ExampleScreen extends React.PureComponent<Props, State> {
                 { this.renderSection('Go to modal screen') }
                 { this.renderSection('Redux usage') }
                 { this.renderSection('Native modules example') }
+                { this.renderSection('Animation example') }
             </ScrollView>
         );
     }
@@ -174,10 +182,33 @@ class ExampleScreen extends React.PureComponent<Props, State> {
                         </Text>
                     </View>
                 );
+            case 'Animation example':
+                const opacityStyle = { opacity: this.state.opacityValue };
+                const combinedStyle = [ styles.opacityAnimationView, opacityStyle ];
+                return (
+                    <View>
+                        <Text>
+                            {'Animation example'}
+                        </Text>
+                        <Animated.View style={ combinedStyle } />
+                        <Button
+                            shouldHavePressDelay={ true }
+                            onPress={ () => { this.animateOpacity(); } }
+                            text={ 'Animate opacity' }
+                        />
+                    </View>
+                );
         
             default:
                 break;
         }
+    }
+
+    animateOpacity() {
+        Animated.timing(this.state.opacityValue, {
+            toValue: 1,
+            duration: 1000,
+        }).start();
     }
 
     navigateToRoute(routeName: string) {
