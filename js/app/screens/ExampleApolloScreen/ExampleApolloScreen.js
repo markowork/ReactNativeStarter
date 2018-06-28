@@ -9,6 +9,7 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import Button from 'components.Button';
+import ExampleApolloMutation from './ExampleApolloMutation';
 
 type Props = {
   data: any,
@@ -44,6 +45,8 @@ class ExampleApolloScreen extends React.PureComponent<Props, State> {
                     onPress={ () => { this.refetchGraphQLData(); } }
                     text={ 'Refetch' }
                 />
+
+                <ExampleApolloMutation />
             </View>
         );
     }
