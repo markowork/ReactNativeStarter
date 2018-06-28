@@ -5,12 +5,16 @@
 
 import { createStackNavigator } from 'react-navigation';
 
+import ExampleApolloScreen from 'screens.ExampleApolloScreen';
 import ExampleScreen from 'screens.ExampleScreen';
 import HomeScreen from 'screens.HomeScreen';
 import ExampleModal from 'modals.ExampleModal';
 
 const ScreensStack = createStackNavigator(
     {
+        ExampleApolloScreen: {
+            screen: ExampleApolloScreen,
+        },
         ExampleScreen: {
             screen: ExampleScreen,
         },

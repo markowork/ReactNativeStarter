@@ -7,6 +7,8 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 
 import reducers from './js/shared/reducers';
 import ServiceInitializer from './js/app/initializers/ServiceInitializer';
@@ -17,8 +19,10 @@ import RootNavigator from 'screens.RootNavigator';
 type Props = {};
 type State = {};
 
+const client = new ApolloClient({ uri: 'http://localhost:4000/graphql' });
+
 export default class App extends Component<Props, State> {
-    componentDidMount() {
+    componentWillMount() {
         ServiceInitializer.initialize();
         userDataInitializer();
     }
@@ -26,9 +30,11 @@ export default class App extends Component<Props, State> {
     render() {
         const store = createStore(reducers);
         return (
-            <Provider store={ store }>
-                <RootNavigator />
-            </Provider>
+            <ApolloProvider client={ client }>
+                <Provider store={ store }>
+                    <RootNavigator />
+                </Provider>
+            </ApolloProvider>
         );
     }
 }
