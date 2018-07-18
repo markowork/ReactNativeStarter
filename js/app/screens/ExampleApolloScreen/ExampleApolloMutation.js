@@ -30,8 +30,8 @@ class ExampleApolloMutation extends React.PureComponent<Props, State> {
     triggerMutation() {
         this.props.mutate({
             variables: {
-                newName: 'Miss Monique',
-                userId: '5b338fbc2f6dfe12d0bac8f2',
+                newName: 'Marina',
+                userId: '5b337ff5deb9811168e8873d',
             },
         });
     }

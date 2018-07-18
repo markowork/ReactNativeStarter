@@ -34,11 +34,11 @@ export default class HomeScreen extends React.PureComponent<Props, State> {
                     onPress={ () => { this.navigateToRoute('ExampleScreen'); } }
                     text={ 'Check the example route!' }
                 />
-                <Button
+                {/* <Button
                     shouldHavePressDelay={ true }
                     onPress={ () => { this.navigateToRoute('ExampleApolloScreen'); } }
                     text={ 'Check the apollo example route!' }
-                />
+                /> */}
             </View>
         );
     }
